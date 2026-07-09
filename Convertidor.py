@@ -1,3 +1,5 @@
+from fastapi import FastApi
+
 def decimal_to_binary(decimal_num):
     return bin(decimal_num)[2:]
 
