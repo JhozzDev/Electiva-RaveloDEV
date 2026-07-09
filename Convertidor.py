@@ -1,5 +1,13 @@
 from fastapi import FastApi
 
+app = FastApi()
+
+@app.get("/")
+def Home():
+    return ({
+        "status": 404
+    })
+
 def decimal_to_binary(decimal_num):
     return bin(decimal_num)[2:]
 
@@ -29,20 +37,4 @@ def to_decimal(num, source_system):
     else:
         return "Sistema numérico de origen no válido"
 
-def main():
-    cantidad = input("Ingrese la cantidad a convertir: ")
-    sistema_origen = input("Ingrese el sistema numérico de la cantidad (binario, octal, hexadecimal o decimal): ").lower()
 
-    if sistema_origen == "decimal":
-        cantidad_decimal = int(cantidad)
-    else:
-        cantidad_decimal = to_decimal(cantidad, sistema_origen)
-
-    sistema_destino = input("Ingrese el sistema numérico de destino (binario, octal, hexadecimal o decimal): ").lower()
-
-    resultado = from_decimal(cantidad_decimal, sistema_destino)
-
-    print(f"El resultado de la conversión es: {resultado}")
-
-if __name__ == "__main__":
-    main()
