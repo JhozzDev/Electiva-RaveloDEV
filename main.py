@@ -22,22 +22,13 @@ def Home():
         "status": 404
     })
 
-@app.get("/calculate/{r}")
-def Numbers(r: int):
-    data = 0
-    if r == 1:
-       data = 1
-    else: 
-        data =2
-    return {data}
+@app.get("/to1/{r}")
+def decimal_to_binary(r):
+    return bin(r)[2:]
 
-
-
-def decimal_to_binary(decimal_num):
-    return bin(decimal_num)[2:]
-
-def decimal_to_octal(decimal_num):
-    return oct(decimal_num)[2:]
+@app.get("/to2/{r}")
+def decimal_to_octal(r):
+    return oct(r)[2:]
 
 def decimal_to_hexadecimal(decimal_num):
     return hex(decimal_num)[2:].upper()
