@@ -24,15 +24,15 @@ def Home():
 
 @app.get("/to1/{r}")
 def decimal_to_binary(r):
-    return bin(r)[2:]
+    return ({"result":bin(r)[2:]})
 
 @app.get("/to2/{r}")
 def decimal_to_octal(r):
-    return oct(r)[2:]
+    return  ({"result":oct(r)[2:]})
 
 @app.get("/to3/{r}")
 def decimal_to_hexadecimal(r):
-    return hex(r)[2:].upper()
+    return ({"result":hex(r)[2:].upper()})
 
 def from_decimal(decimal_num, target_system):
     if target_system == "binario":
