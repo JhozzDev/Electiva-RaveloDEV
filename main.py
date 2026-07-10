@@ -30,8 +30,9 @@ def decimal_to_binary(r):
 def decimal_to_octal(r):
     return oct(r)[2:]
 
-def decimal_to_hexadecimal(decimal_num):
-    return hex(decimal_num)[2:].upper()
+@app.get("/to3/{r}")
+def decimal_to_hexadecimal(r):
+    return hex(r)[2:].upper()
 
 def from_decimal(decimal_num, target_system):
     if target_system == "binario":
