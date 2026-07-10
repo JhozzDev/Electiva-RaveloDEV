@@ -24,16 +24,17 @@ def Home():
 
 @app.get("/to1/{r}")
 def decimal_to_binary(r):
-    return bin(r)[2:]
+    return ({"r":bin(r)[2:]})
 
 @app.get("/to2/{r}")
 def decimal_to_octal(r):
-    return oct(r)[2:]
+    return ({"r":oct(r)[2:]})
 
 @app.get("/to3/{r}")
 def decimal_to_hexadecimal(r):
-    return hex(r)[2:].upper()
+    return ({"r":hex(r)[2:].upper()})
 
+@app.post("/fromD")
 def from_decimal(decimal_num, target_system):
     if target_system == "binario":
         return decimal_to_binary(decimal_num)
@@ -44,6 +45,7 @@ def from_decimal(decimal_num, target_system):
     else:
         return "Sistema numérico de destino no válido"
 
+@app.post("/toD")
 def to_decimal(num, source_system):
     if source_system == "binario":
         return int(num, 2)
