@@ -22,36 +22,35 @@ def Home():
         "status": 404
     })
 
-@app.get("/to1/{r}")
 def decimal_to_binary(r):
-    return ({"result":bin(r)[2:]})
+    return bin(r)[2:]
 
-@app.get("/to2/{r}")
+
 def decimal_to_octal(r):
-    return  ({"result":oct(r)[2:]})
+    return  oct(r)[2:]
 
-@app.get("/to3/{r}")
 def decimal_to_hexadecimal(r):
-    return ({"result":hex(r)[2:].upper()})
+    return hex(r)[2:].upper()
 
+@app.get("/fromD/{decimal_num}/{target_system}")
 def from_decimal(decimal_num, target_system):
     if target_system == "binario":
-        return decimal_to_binary(decimal_num)
+        return ({"r": decimal_to_binary(decimal_num)})
     elif target_system == "octal":
-        return decimal_to_octal(decimal_num)
+        return ({"r": decimal_to_octal(decimal_num)})
     elif target_system == "hexadecimal":
-        return decimal_to_hexadecimal(decimal_num)
+        return ({"r": decimal_to_hexadecimal(decimal_num)})
     else:
-        return "Sistema numérico de destino no válido"
+        return ({"r": "Sistema numérico de destino no válido"})
 
+@app.get("/toD{num}/{source_system})
 def to_decimal(num, source_system):
     if source_system == "binario":
-        return int(num, 2)
+        return ({"r": int(num, 2)})
     elif source_system == "octal":
-        return int(num, 8)
+        return ({"r": int(num, 8)})
     elif source_system == "hexadecimal":
-        return int(num, 16)
+        return ({"r": int(num, 16)})
     else:
-        return "Sistema numérico de origen no válido"
-
+        return ({"r": "Sistema numerico de destino no valido"})
 
